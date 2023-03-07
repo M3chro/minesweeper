@@ -48,7 +48,7 @@ namespace Minesweeper2
                 SettingsData.Height = (int)Height.Value;
             }
 
-            if (SettingsData.Width * SettingsData.Height <= SettingsData.MineCount)
+            if ((SettingsData.Width * SettingsData.Height) - 9 <= SettingsData.MineCount)
                 SettingsData.MineCount = (SettingsData.Width * SettingsData.Height) / 2;
         }
 
