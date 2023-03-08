@@ -35,6 +35,7 @@ namespace Minesweeper2
         }
         private Dictionary<int, Color> _colors = new Dictionary<int, Color>
         {
+            { -1, Color.Black },
             { 0, Color.Gainsboro },
             { 1, Color.Blue },
             { 2, Color.Green },

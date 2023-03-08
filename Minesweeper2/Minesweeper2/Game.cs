@@ -13,13 +13,15 @@ namespace Minesweeper2
     public partial class Game : Form
     {
         Cell[,] cells;
+        TableLayoutPanel panel;
+
         int width = SettingsData.Width;
         int height = SettingsData.Height;
         bool firstClick = true;
         Random random = new Random();
         int counter = 0;
         int flagCounter = SettingsData.MineCount;
-
+   
         public Game()
         {
             InitializeComponent();
@@ -30,10 +32,14 @@ namespace Minesweeper2
 
         private void NewGame()
         {
-            splitContainer1.Panel2.Controls.Clear();
+            panel = new TableLayoutPanel()
+            {
+                Dock = DockStyle.Fill,
+                BackColor = Color.Gainsboro,
+                RowCount = cells.GetLength(0),
+                ColumnCount = cells.GetLength(1)
+            };
 
-            TableLayoutPanel panel = new TableLayoutPanel();
- 
             splitContainer1.Panel1.GetType().GetProperty("DoubleBuffered",
                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
                .SetValue(splitContainer1.Panel1, true, null);
@@ -41,10 +47,7 @@ namespace Minesweeper2
             panel.GetType().GetProperty("DoubleBuffered",
                 System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
                 .SetValue(panel, true, null);
-            panel.Dock = DockStyle.Fill;
-            panel.BackColor = Color.Gainsboro;
-            panel.RowCount = cells.GetLength(0);
-            panel.ColumnCount = cells.GetLength(1);
+
 
             for (int i = 0; i < panel.RowCount; i++)
             {
@@ -116,7 +119,7 @@ namespace Minesweeper2
         {
             for (int i = 0; i < cells.GetLength(0); i++)
             {
-                for (int j= 0; j < cells.GetLength(1); j++)
+                for (int j = 0; j < cells.GetLength(1); j++)
                 {
                     if (cells[i, j].Value != -1)
                     {
@@ -233,6 +236,18 @@ namespace Minesweeper2
             }
         }
 
+        private void ResetGame()
+        {
+            foreach (Cell c in panel.Controls)
+            {
+                c.Value = 0;
+                c.Label = "";
+                c.Marked = false;
+                c.BackColor = c.DefaultColor;
+            }
+            firstClick = true;
+        }
+
         private void GameOver(bool won)
         {
             timer1.Stop();
@@ -244,9 +259,8 @@ namespace Minesweeper2
                 );
             if (result == DialogResult.Yes)
             {
-                NewGame();
+                ResetGame();
                 ResetValues();
-                firstClick = true;
             }
             else
                 this.Close();
@@ -270,8 +284,7 @@ namespace Minesweeper2
         {
             timer1.Stop();
             ResetValues();
-            NewGame();
-            firstClick = true;
+            ResetGame();
         }
     }
 }
