@@ -33,6 +33,14 @@ namespace Minesweeper2
             splitContainer1.Panel2.Controls.Clear();
 
             TableLayoutPanel panel = new TableLayoutPanel();
+ 
+            splitContainer1.Panel1.GetType().GetProperty("DoubleBuffered",
+               System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
+               .SetValue(splitContainer1.Panel1, true, null);
+
+            panel.GetType().GetProperty("DoubleBuffered",
+                System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
+                .SetValue(panel, true, null);
             panel.Dock = DockStyle.Fill;
             panel.BackColor = Color.Gainsboro;
             panel.RowCount = cells.GetLength(0);
