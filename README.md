@@ -1,2 +1,2 @@
 # Minesweeper
-KI/GUI - Winforms app
+KI/GUI - Winforms ap
