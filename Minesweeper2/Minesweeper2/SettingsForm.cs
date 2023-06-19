@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Minesweeper2
 {
-    public partial class Settings : Form
+    public partial class SettingsForm : Form
     {
-        public Settings()
+        public SettingsForm()
         {
             InitializeComponent();
         }
@@ -48,6 +48,7 @@ namespace Minesweeper2
                 SettingsData.Height = (int)Height.Value;
             }
 
+            // Adjust mine count if it exceeds the number of cells
             if ((SettingsData.Width * SettingsData.Height) - 9 <= SettingsData.MineCount)
                 SettingsData.MineCount = (SettingsData.Width * SettingsData.Height) / 2;
         }

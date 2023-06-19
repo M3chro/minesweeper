@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace Minesweeper2
 {
-    public partial class Menu : Form
+    public partial class MenuForm : Form
     {
-        public Menu()
+        public MenuForm()
         {
             InitializeComponent();
         }
 
         private void Start_Click(object sender, EventArgs e)
         {
-            Game game = new Game();
+            GameForm game = new GameForm();
             game.Show();
             this.Hide();
             game.FormClosing += (s, args) => this.Show();
@@ -27,7 +27,7 @@ namespace Minesweeper2
 
         private void Settings_Click(object sender, EventArgs e)
         {
-            Settings settings = new Settings();
+            SettingsForm settings = new SettingsForm();
             settings.Show();
             this.Hide();
             settings.FormClosing += (s, args) => this.Show();

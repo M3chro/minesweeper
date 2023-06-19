@@ -1,6 +1,6 @@
 ﻿namespace Minesweeper2
 {
-    partial class Game
+    partial class GameForm
     {
         /// <summary>
         /// Vyžaduje se proměnná návrháře.
@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Game));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameForm));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.flagLabel = new System.Windows.Forms.Label();
-            this.Reset = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.timerLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Reset = new System.Windows.Forms.Button();
+            this.flagLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -62,39 +62,17 @@
             this.splitContainer1.SplitterDistance = 152;
             this.splitContainer1.TabIndex = 0;
             // 
-            // pictureBox1
+            // timerLabel
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox1.BackColor = System.Drawing.Color.Red;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 33);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(97, 87);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // flagLabel
-            // 
-            this.flagLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.flagLabel.AutoSize = true;
-            this.flagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.flagLabel.ForeColor = System.Drawing.Color.White;
-            this.flagLabel.Location = new System.Drawing.Point(115, 57);
-            this.flagLabel.Name = "flagLabel";
-            this.flagLabel.Size = new System.Drawing.Size(60, 42);
-            this.flagLabel.TabIndex = 1;
-            this.flagLabel.Text = "20";
-            // 
-            // Reset
-            // 
-            this.Reset.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.Reset.Location = new System.Drawing.Point(330, 33);
-            this.Reset.Name = "Reset";
-            this.Reset.Size = new System.Drawing.Size(312, 85);
-            this.Reset.TabIndex = 2;
-            this.Reset.Text = "Reset";
-            this.Reset.UseVisualStyleBackColor = true;
-            this.Reset.Click += new System.EventHandler(this.Reset_Click);
+            this.timerLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.timerLabel.AutoSize = true;
+            this.timerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.timerLabel.ForeColor = System.Drawing.Color.White;
+            this.timerLabel.Location = new System.Drawing.Point(905, 57);
+            this.timerLabel.Name = "timerLabel";
+            this.timerLabel.Size = new System.Drawing.Size(39, 42);
+            this.timerLabel.TabIndex = 4;
+            this.timerLabel.Text = "0";
             // 
             // label1
             // 
@@ -108,24 +86,46 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Time:";
             // 
-            // timerLabel
+            // Reset
             // 
-            this.timerLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.timerLabel.AutoSize = true;
-            this.timerLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.timerLabel.ForeColor = System.Drawing.Color.White;
-            this.timerLabel.Location = new System.Drawing.Point(905, 57);
-            this.timerLabel.Name = "timerLabel";
-            this.timerLabel.Size = new System.Drawing.Size(39, 42);
-            this.timerLabel.TabIndex = 4;
-            this.timerLabel.Text = "0";
+            this.Reset.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.Reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Reset.Location = new System.Drawing.Point(330, 33);
+            this.Reset.Name = "Reset";
+            this.Reset.Size = new System.Drawing.Size(312, 85);
+            this.Reset.TabIndex = 2;
+            this.Reset.Text = "Reset";
+            this.Reset.UseVisualStyleBackColor = true;
+            this.Reset.Click += new System.EventHandler(this.Reset_Click);
+            // 
+            // flagLabel
+            // 
+            this.flagLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.flagLabel.AutoSize = true;
+            this.flagLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.flagLabel.ForeColor = System.Drawing.Color.White;
+            this.flagLabel.Location = new System.Drawing.Point(115, 57);
+            this.flagLabel.Name = "flagLabel";
+            this.flagLabel.Size = new System.Drawing.Size(60, 42);
+            this.flagLabel.TabIndex = 1;
+            this.flagLabel.Text = "20";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.BackColor = System.Drawing.Color.Red;
+            this.pictureBox1.Location = new System.Drawing.Point(12, 33);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(97, 87);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // timer1
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // Game
+            // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -133,7 +133,7 @@
             this.Controls.Add(this.splitContainer1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "Game";
+            this.Name = "GameForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Minesweeper";
             this.splitContainer1.Panel1.ResumeLayout(false);
