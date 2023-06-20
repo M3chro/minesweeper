@@ -12,50 +12,24 @@ namespace Minesweeper2
 {
     public partial class SettingsForm : Form
     {
+        SettingsLogic settingsLogic;
+
         public SettingsForm()
         {
             InitializeComponent();
-        }
-
-        private void SetNewData()
-        {
-            if (Easy.Checked)
-            {
-                SettingsData.Difficulty = Difficulty.Easy;
-                SettingsData.MineCount = 10;
-                SettingsData.Width = 6;
-                SettingsData.Height = 6;
-            }
-            else if (Normal.Checked)
-            {
-                SettingsData.Difficulty = Difficulty.Normal;
-                SettingsData.MineCount = 20;
-                SettingsData.Width = 12;
-                SettingsData.Height = 12;
-            }
-            else if (Hard.Checked)
-            {
-                SettingsData.Difficulty = Difficulty.Hard;
-                SettingsData.MineCount = 100;
-                SettingsData.Width = 30;
-                SettingsData.Height = 30;
-            }
-            else if (Custom.Checked)
-            {
-                SettingsData.Difficulty = Difficulty.Custom;
-                SettingsData.MineCount = (int)Mines.Value;
-                SettingsData.Width = (int)Width.Value;
-                SettingsData.Height = (int)Height.Value;
-            }
-
-            // Adjust mine count if it exceeds the number of cells
-            if ((SettingsData.Width * SettingsData.Height) - 9 <= SettingsData.MineCount)
-                SettingsData.MineCount = (SettingsData.Width * SettingsData.Height) / 2;
+            settingsLogic = new SettingsLogic();
         }
 
         private void Settings_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SetNewData();
+            if (Easy.Checked)
+                settingsLogic.SetEasyDifficulty();
+            else if (Normal.Checked)
+                settingsLogic.SetNormalDifficulty();
+            else if (Hard.Checked)
+                settingsLogic.SetHardDifficulty();
+            else if (Custom.Checked)
+                settingsLogic.SetCustomDifficulty((int)Mines.Value, (int)Width.Value, (int)Height.Value);
         }
 
         private void GoBack_Click(object sender, EventArgs e)
@@ -68,7 +42,7 @@ namespace Minesweeper2
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 PickColor.BackColor = colorDialog1.Color;
-                SettingsData.DefaultColor = PickColor.BackColor;
+                settingsLogic.SetColor(PickColor.BackColor);
             }
         }
 

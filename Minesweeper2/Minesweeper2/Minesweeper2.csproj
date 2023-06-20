@@ -79,6 +79,7 @@
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SettingsData.cs" />
+    <Compile Include="SettingsLogic.cs" />
     <EmbeddedResource Include="Cell.resx">
       <DependentUpon>Cell.cs</DependentUpon>
     </EmbeddedResource>
